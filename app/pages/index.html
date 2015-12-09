@@ -13,7 +13,14 @@
      <link rel="stylesheet" type="text/css" href="/styles/player_bar.css">
 </head>
 <body>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-    <script src="/scripts/app.js"></script>
+ 	<nav class="navbar"> <!-- nav -->
+    	<img src="/assets/images/bloc_jams_logo.png" alt="bloc jams logo" class="logo">
+		<div class="links-container">
+        	<a ui-sref="collection" class="navbar-link">collection</a>
+            <a ui-sref="album" class="navbar-link">album</a>
+        </div>
+	</nav>
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+  	<script src="/scripts/app.js"></script>
 </body>
 </html>
