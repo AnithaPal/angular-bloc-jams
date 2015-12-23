@@ -34,16 +34,27 @@
  		};
 		
 		/**
+ 			* @function playSong
+ 			* @desc uses play method on currentBuzzObject
+ 			* @param {Object} song
+		*/
+		var playSong = function(song, currentBuzzObject){
+			currentBuzzObject.play();
+			song.playing = true;
+		};
+		
+		
+		
+		/**
  			* @function play
- 			* @desc Plays a song whether it is paused or not and updates song.playing parameter
+ 			* @desc Plays a song whether it is paused or not.
  			* @param {Object} currentSong
 		*/
 		
 		SongPlayer.play = function(song) {
 			if(currentSong !== song){
 				setSong(song);
-       			currentBuzzObject.play();
-				song.playing = true;
+       			playSong(song, currentBuzzObject);
 			}
 			else if(currentSong === song) {
 				if(currentBuzzObject.isPaused()){
@@ -60,7 +71,7 @@
 		SongPlayer.pause = function(song){
 			currentBuzzObject.pause();
 			song.playing = false;
-		}
+		};
 
 		return SongPlayer;
 	}
