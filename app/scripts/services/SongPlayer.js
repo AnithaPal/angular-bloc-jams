@@ -1,7 +1,10 @@
 (function() {
 	function SongPlayer(){
+		/**
+ 			* @desc Service Song Player 
+ 			* @type {Object}
+		*/
 		var SongPlayer = {};
-		
 		
 		/**
  			* @desc current song 
@@ -42,8 +45,6 @@
 			currentBuzzObject.play();
 			song.playing = true;
 		};
-		
-		
 		
 		/**
  			* @function play
