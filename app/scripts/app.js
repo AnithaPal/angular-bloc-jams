@@ -18,10 +18,15 @@
 				templateUrl: 'templates/album.html'
 			})
 			.state('collection', {
-			url: '/',
-			controller: 'CollectionCtrl as collection',
-			templateUrl: 'templates/collection.html'
-		});
+				url: '/',
+				controller: 'CollectionCtrl as collection',
+				templateUrl: 'templates/collection.html'
+		    })
+			.state('playerBar', {
+				url: '/',
+				controller: 'playerBarCtrl as playerBar',
+				templateUrl: 'templates/palyer_bar.html'
+		    });
 		
 	}
 	
