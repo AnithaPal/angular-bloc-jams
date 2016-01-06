@@ -16,8 +16,7 @@
 		*/
 		var setSong = function(song) {
     		if (currentBuzzObject) {
-        		currentBuzzObject.stop();
-        		SongPlayer.currentSong.playing = null;
+        		stopSong();
     		}
  
     		currentBuzzObject = new buzz.sound(song.audioUrl, {
@@ -43,14 +42,16 @@
 		*/
 		var getSongIndex = function(song){
 			return currentAlbum.songs.indexOf(song);
-		}
+		};
 		
 		
 		/**
- 			* @desc current song 
- 			* @type {Object}
+ 			* @desc stops playing song 
 		*/
-//		SongPlayer.currentSong = song;
+		var stopSong = function(){
+			currentBuzzObject.stop();
+			SongPlayer.currentSong.playing = null;
+		};
 		
 		//This sets first song of the album as default
 		setSong(currentAlbum.songs[0]);
@@ -59,7 +60,6 @@
  			* @desc Plays a song whether it is paused or not.
  			* @param {Object} currentSong
 		*/
-		
 		SongPlayer.play = function(song) {
 			song = song || SongPlayer.currentSong;
 			if(SongPlayer.currentSong !== song){
@@ -76,7 +76,6 @@
 		
 		/**
  			* @desc Pauses a song when it is playing and updates song.playing parameter
- 			* @param {Object} currentSong
 		*/
 		SongPlayer.pause = function(song){
 			song = song || SongPlayer.currentSong;
@@ -93,9 +92,25 @@
 			currentSongIndex--;
 			
 			if(currentSongIndex < 0){
-				currentBuzzObject.stop();
-				SongPlayer.currentSong.playing = null;
+				stopSong();
 			} else{
+				var song = currentAlbum.songs[currentSongIndex];
+				setSong(song);
+				playSong(song, currentBuzzObject);
+			}
+		};
+		
+		
+		/**
+ 			* @desc gets the next song in the album by incrementing the index
+		*/
+		SongPlayer.next = function(){
+			var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+			currentSongIndex++;
+		
+			if(currentSongIndex >= currentAlbum.songs.length){
+				stopSong();
+			} else {
 				var song = currentAlbum.songs[currentSongIndex];
 				setSong(song);
 				playSong(song, currentBuzzObject);
