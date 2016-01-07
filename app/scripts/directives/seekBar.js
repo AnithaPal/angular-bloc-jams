@@ -69,6 +69,15 @@
 						$document.unbind('mouseup.thumb');
 					});
 				};
+				
+				/**
+					* @desc returns css rule to apply on thumb  
+ 					* @param {Object} percent
+				*/
+				scope.thumbStyle = function(){
+					return {left: percentString()};
+				};
+				
 			}
 		};
 	}
