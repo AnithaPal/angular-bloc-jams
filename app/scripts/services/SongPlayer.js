@@ -26,7 +26,8 @@
  
 			currentBuzzObject.bind('timeupdate', function(){
 				$rootScope.$apply(function(){
-					SongPlayer.currentTime = currentBuzzObject.getTime();	
+					SongPlayer.currentTime = currentBuzzObject.getTime();
+					SongPlayer.volume = currentBuzzObject.getVolume();
 				});
 			});
 			
@@ -68,6 +69,16 @@
 			 * @type {Number}
 		*/
 			 SongPlayer.currentTime = null;
+		
+		/**
+			 * @desc voulume of the currently playing song
+			 * @type {Number}
+		*/
+			 SongPlayer.volume  = null;
+		
+		
+		SongPlayer.volume  = 80;
+		SongPlayer.maxVolume  = 100;
 		
 		/**
  			* @desc Plays a song whether it is paused or not.
@@ -134,7 +145,13 @@
 			if(currentBuzzObject){
 				currentBuzzObject.setTime(time);
 			}
-		}
+		};
+		
+		SongPlayer.setVolume = function(volume){
+			if(currentBuzzObject){
+				currentBuzzObject.setVolume(volume);
+			}
+		};
 
 		return SongPlayer;
 	}
