@@ -1,5 +1,5 @@
 (function() {
-	function SongPlayer(Fixtures){
+	function SongPlayer($rootScope,Fixtures){
 		
  		// @desc Service Song Player 
 		var SongPlayer = {};
@@ -24,8 +24,15 @@
         		preload: true
     		});
  
+			currentBuzzObject.bind('timeupdate', function(){
+				$rootScope.$apply(function(){
+					SongPlayer.currentTime = currentBuzzObject.getTime();	
+				});
+			});
+			
     		SongPlayer.currentSong = song;
  		};
+		
 		
 		/**
  			* @desc uses play method on currentBuzzObject
@@ -55,6 +62,12 @@
 		
 		//This sets first song of the album as default
 		setSong(currentAlbum.songs[0]);
+		
+		/**
+			 * @desc Current playback time (in seconds) of currently playing song
+			 * @type {Number}
+		*/
+			 SongPlayer.currentTime = null;
 		
 		/**
  			* @desc Plays a song whether it is paused or not.
@@ -116,13 +129,20 @@
 				playSong(song, currentBuzzObject);
 			}
 		};
+		
+		SongPlayer.setCurrentTime = function(time){
+			if(currentBuzzObject){
+				currentBuzzObject.setTime(time);
+			}
+		}
 
 		return SongPlayer;
 	}
 	
 	angular
 		.module('blocJams')
-		.factory('SongPlayer', SongPlayer);
-})();
+		.factory('SongPlayer', ['$rootScope', 'Fixtures', SongPlayer])
+	 })();
+
 
 
