@@ -68,7 +68,7 @@
 			 * @desc Current playback time (in seconds) of currently playing song
 			 * @type {Number}
 		*/
-			 SongPlayer.currentTime = null;
+			 SongPlayer.currentTime = 0;
 		
 		/**
 			 * @desc voulume of the currently playing song
