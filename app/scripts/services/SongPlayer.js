@@ -43,6 +43,10 @@
 			currentBuzzObject.play();
 			song.playing = true;
 			song.muting = false;
+//			if ( currentBuzzObject.isEnded() ) {
+//				this.next();
+//				console.log("calling next once ended")
+//			}
 		};
 		
 		/**
@@ -143,33 +147,47 @@
 			}
 		};
 		
+		/**
+ 			* @desc updates the current time  while song is playing 
+			
+		*/
 		SongPlayer.setCurrentTime = function(time){
 			if(currentBuzzObject){
 				currentBuzzObject.setTime(time);
 			}
 		};
 		
+		/**
+ 			* @desc sets volume the playing song
+			
+		*/
 		SongPlayer.setVolume = function(volume){
 			if(currentBuzzObject){
 				currentBuzzObject.setVolume(volume);
 			}
 		};
 		
+		/**
+ 			* @desc mutes song
+			
+		*/
 		SongPlayer.muteVolume = function(song){
 			song = song || SongPlayer.currentSong;
 			if(currentBuzzObject){
 				currentBuzzObject.mute();
 				 song.muting = true;
-				console.log("Mute is called")
 			}
 		};
 		
+		/**
+ 			* @desc unmutes song
+			
+		*/
 		SongPlayer.unmuteVolume = function(song){
 			song = song || SongPlayer.currentSong;
 			if(currentBuzzObject){
 				currentBuzzObject.unmute();
 				song.muting = false;
-				console.log("UnMute is called")
 		     }
 		}
 
