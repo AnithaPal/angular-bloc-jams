@@ -28,6 +28,11 @@
 				$rootScope.$apply(function(){
 					SongPlayer.currentTime = currentBuzzObject.getTime();
 					SongPlayer.volume = currentBuzzObject.getVolume();
+					
+					if ( currentBuzzObject.isEnded() ) {
+				        SongPlayer.next();
+						console.log("calling next once ended")
+					}
 				});
 			});
 			
@@ -43,10 +48,7 @@
 			currentBuzzObject.play();
 			song.playing = true;
 			song.muting = false;
-//			if ( currentBuzzObject.isEnded() ) {
-//				this.next();
-//				console.log("calling next once ended")
-//			}
+//			
 		};
 		
 		/**
