@@ -32,11 +32,11 @@
          <div class="control-group volume">
 			 <a class="mute-unmute">
                  <span class="ion-volume-mute"
-					   ng-show="!playerBar.songPlayer.currentSong.muting"
+					   ng-show="!playerBar.songPlayer.currentSong.muted"
 					   ng-click="playerBar.songPlayer.muteVolume()">	   
 				 </span>
 			 	  <span class="ion-volume-low"
-						ng-show="playerBar.songPlayer.currentSong.muting"
+						ng-show="playerBar.songPlayer.currentSong.muted"
 						ng-click="playerBar.songPlayer.unmuteVolume()">
 				 </span>	
              </a>

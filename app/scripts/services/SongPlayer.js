@@ -175,10 +175,9 @@
 		*/
 		SongPlayer.muteVolume = function(song){
 			song = song || SongPlayer.currentSong;
-			if(currentBuzzObject){
-				currentBuzzObject.mute();
-				 song.muting = true;
-			}
+			currentBuzzObject.mute();
+		    song.muted = true;
+		
 		};
 		
 		/**
@@ -187,10 +186,9 @@
 		*/
 		SongPlayer.unmuteVolume = function(song){
 			song = song || SongPlayer.currentSong;
-			if(currentBuzzObject){
-				currentBuzzObject.unmute();
-				song.muting = false;
-		     }
+			currentBuzzObject.unmute();
+			song.muted = false;
+		     
 		}
 
 		return SongPlayer;
