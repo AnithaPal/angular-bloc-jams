@@ -28,6 +28,11 @@
 				$rootScope.$apply(function(){
 					SongPlayer.currentTime = currentBuzzObject.getTime();
 					SongPlayer.volume = currentBuzzObject.getVolume();
+					
+					if ( currentBuzzObject.isEnded() ) {
+				        SongPlayer.next();
+						console.log("calling next once ended")
+					}
 				});
 			});
 			
@@ -42,6 +47,8 @@
 		var playSong = function(song, currentBuzzObject){
 			currentBuzzObject.play();
 			song.playing = true;
+			song.muting = false;
+//			
 		};
 		
 		/**
@@ -59,6 +66,7 @@
 		var stopSong = function(){
 			currentBuzzObject.stop();
 			SongPlayer.currentSong.playing = null;
+			SongPlayer.currentSong.muting = false;
 		};
 		
 		//This sets first song of the album as default
@@ -74,7 +82,7 @@
 			 * @desc voulume of the currently playing song
 			 * @type {Number}
 		*/
-			 SongPlayer.volume  = null;
+			 
 		
 		
 		SongPlayer.volume  = 80;
@@ -141,17 +149,47 @@
 			}
 		};
 		
+		/**
+ 			* @desc updates the current time  while song is playing 
+			
+		*/
 		SongPlayer.setCurrentTime = function(time){
 			if(currentBuzzObject){
 				currentBuzzObject.setTime(time);
 			}
 		};
 		
+		/**
+ 			* @desc sets volume the playing song
+			
+		*/
 		SongPlayer.setVolume = function(volume){
 			if(currentBuzzObject){
 				currentBuzzObject.setVolume(volume);
 			}
 		};
+		
+		/**
+ 			* @desc mutes song
+			
+		*/
+		SongPlayer.muteVolume = function(song){
+			song = song || SongPlayer.currentSong;
+			currentBuzzObject.mute();
+		    song.muted = true;
+		
+		};
+		
+		/**
+ 			* @desc unmutes song
+			
+		*/
+		SongPlayer.unmuteVolume = function(song){
+			song = song || SongPlayer.currentSong;
+			currentBuzzObject.unmute();
+			song.muted = false;
+		     
+		}
 
 		return SongPlayer;
 	}
