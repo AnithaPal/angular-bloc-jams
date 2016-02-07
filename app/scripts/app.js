@@ -31,7 +31,8 @@
 	}
 	
 	angular
-		.module('blocJams', ['ui.router'])
-		.config(config);	
+		.module('blocJams', ['ui.router', 'firebase'])
+		.config(config)
+		.constant('FIREBASE_URI', 'https://torrid-torch-5676.firebaseio.com/');	
 })();
 

@@ -6,7 +6,14 @@
 		
 		//desc album contains list of songs
 		var currentAlbum = Fixtures.getAlbum();
+
+       console.log(currentAlbum);
 		
+//		angular.forEach(currentAlbum, function(key, value){
+//			console.log(key, value);
+//			
+//		})
+		 
 		// @desc Buzz object audio file
 		var currentBuzzObject = null;
 		
@@ -56,6 +63,7 @@
  			* @param {Object} song index
 		*/
 		var getSongIndex = function(song){
+			
 			return currentAlbum.songs.indexOf(song);
 		};
 		
