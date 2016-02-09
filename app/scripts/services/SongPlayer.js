@@ -6,14 +6,11 @@
 		
 		//desc album contains list of songs
 		var currentAlbum = Fixtures.getAlbum();
-
-       console.log(currentAlbum);
+//			var currentAlbum = Fixtures.dataRetrieved();
 		
-//		angular.forEach(currentAlbum, function(key, value){
-//			console.log(key, value);
-//			
-//		})
-		 
+		console.log(currentAlbum);
+				
+
 		// @desc Buzz object audio file
 		var currentBuzzObject = null;
 		
@@ -78,7 +75,7 @@
 		};
 		
 		//This sets first song of the album as default
-		setSong(currentAlbum.songs[0]);
+//		setSong(currentAlbum.songs[0]);
 		
 		/**
 			 * @desc Current playback time (in seconds) of currently playing song
@@ -91,7 +88,6 @@
 			 * @type {Number}
 		*/
 			 
-		
 		
 		SongPlayer.volume  = 80;
 		SongPlayer.maxVolume  = 100;
